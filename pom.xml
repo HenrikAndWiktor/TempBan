@@ -65,16 +65,62 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>craftbukkit</artifactId>
-            <version>1.13.2-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
             <version>1.13.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
+    <scm>
+        <connection>scm:git:http://github.com/YellowDuckSE/TempBan</connection>
+        <developerConnection>scm:git:http://github.com/YellowDuckSE/TempBan</developerConnection>
+        <url>http://github.com/YellowDuckSE/TempBan</url>
+    </scm>
+
+    <profiles>
+        <profile>
+            <id>githubUploadJenkins</id>
+            <activation>
+                <property>
+                    <name>github.downloads</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>de.jutzig</groupId>
+                        <artifactId>github-release-plugin</artifactId>
+                        <version>1.1.1</version>
+                        <executions>
+                            <execution>
+                                <id>uploadPACKAGE</id>
+                                <goals>
+                                    <goal>release</goal>
+                                </goals>
+                                <phase>package</phase>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <description>
+                                Release ${project.version} of this project
+
+                                ${project.description}
+                            </description>
+                            <releaseName>${project.artifactId} ${project.version}</releaseName>
+                            <tag>${project.version}</tag>
+                            <fileSets>
+                                <fileSet>
+                                    <directory>${project.basedir}\target\</directory>
+                                    <includes>
+                                        <include>${project.artifactId}-${project.version}.jar</include>
+                                    </includes>
+                                </fileSet>
+                            </fileSets>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
