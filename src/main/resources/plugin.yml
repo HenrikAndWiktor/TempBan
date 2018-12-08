@@ -1,0 +1,10 @@
+name: Ban
+version: ${project.version}
+main: se.wiktoreriksson.minecraft.ban.Ban
+commands:
+  tempban:
+    description: "Ban player"
+    usage: "/tempban player"
+  unban:
+    description: "Unban player"
+    usage: "/unban player"
