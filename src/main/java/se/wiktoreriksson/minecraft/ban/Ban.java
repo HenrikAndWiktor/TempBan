@@ -120,7 +120,7 @@ public final class Ban extends JavaPlugin implements Listener {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player))return false;
+        if (!(sender instanceof Player)||!sender.isOp())return false;
         if (label.equalsIgnoreCase("tempban")) {
             bancmd.put(sender.getName(),getServer().getOfflinePlayer(args[0]));
             ((Player) sender).openInventory(banmenu);

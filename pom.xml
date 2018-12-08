@@ -6,9 +6,11 @@
 
     <groupId>se.wiktoreriksson.minecraft</groupId>
     <artifactId>Ban</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>alpha1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-
+    <description>
+        Spigot Temp Banning
+    </description>
     <name>Ban</name>
 
     <properties>
